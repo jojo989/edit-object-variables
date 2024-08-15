@@ -18,7 +18,7 @@ class $modify(MyEditorUI, EditorUI) {
 		m_editButtonBar->reloadItems(rows, cols);
 	}
 
-	$override
+	
 
 	bool init(LevelEditorLayer* idk) {
 
