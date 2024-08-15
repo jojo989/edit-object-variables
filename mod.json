@@ -1,0 +1,21 @@
+{
+	"geode": "3.4.0",
+	"gd": {
+		"win": "2.206",
+		"android": "2.206",
+		"mac": "2.206",
+		"ios": "2.206"
+	},
+	"id": "jojo989.editobjectvariables",
+	"name": "editObjectVariables",
+	"version": "v1.0.0",
+	"developer": "jojo989",
+	"description": "",
+	"resources": {
+		"spritesheets": {
+			"EditObjButton": [
+				"resources/editSprite.png"
+			]
+		}
+	}
+}
