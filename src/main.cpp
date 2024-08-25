@@ -7,7 +7,7 @@
 using namespace geode::prelude;
 
 class $modify(MyEditorUI, EditorUI) {	
-
+//code stolen from circletool by matcool
 	void createMoveMenu() {
 		EditorUI::createMoveMenu();
 		auto* btn = this->getSpriteButton("editSprite.png"_spr, menu_selector(MyEditorUI::onMyButton), nullptr, 0.9f);
