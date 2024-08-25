@@ -16,7 +16,9 @@ void EditObjectPopup::applyChanges(CCObject* sender) {
     }
     selectedObject->setPositionX(std::stof(xPosStr));
     selectedObject->setRScaleX(std::stof(scaleXStr));
+    selectedObject->m_scaleX = stof(scaleXStr);
     selectedObject->setRScaleY(std::stof(scaleYStr));
+    selectedObject->m_scaleY = stof(scaleYStr);
     selectedObject->setPositionY(std::stof(yPosStr));
     selectedObject->setRotation(std::stof(rotationStr));
 }

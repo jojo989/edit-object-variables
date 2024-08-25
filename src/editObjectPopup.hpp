@@ -19,5 +19,5 @@ class EditObjectPopup : public geode::Popup<> {
 		geode::TextInput* scaleYInput;
 	public:	
 		static EditObjectPopup* create();
-		GameObject* selectedObject = GameManager::sharedState()->getEditorLayer()->m_editorUI->m_selectedObject;
+		GameObject* selectedObject = LevelEditorLayer::get()->m_editorUI->m_selectedObject;
 };
