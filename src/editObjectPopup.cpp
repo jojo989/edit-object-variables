@@ -10,7 +10,8 @@ void EditObjectPopup::applyChanges(CCObject* sender) {
     auto scaleYStr = this->scaleYInput->getString();
     auto yPosStr = this->yPosInput->getString();
     auto rotationStr = this->rotationInput->getString();
-    if (xPosStr.empty() || scaleXStr.empty() || scaleYStr.empty() || yPosStr.empty() || rotationStr.empty()) {
+    auto zOrderStr = this->zOrderInput->getString();
+    if (xPosStr.empty() || scaleXStr.empty() || scaleYStr.empty() || yPosStr.empty() || rotationStr.empty() || zOrderStr.empty()) {
         FLAlertLayer::create("Error", "Some of the fields are empty lel.", "Ok")->show();
         return;
     }
@@ -21,6 +22,7 @@ void EditObjectPopup::applyChanges(CCObject* sender) {
     selectedObject->m_scaleY = stof(scaleYStr);
     selectedObject->setPositionY(std::stof(yPosStr));
     selectedObject->setRotation(std::stof(rotationStr));
+    selectedObject->m_zOrder = stod(zOrderStr);
 }
 
 void EditObjectPopup::createInputs() {
@@ -31,6 +33,7 @@ void EditObjectPopup::createInputs() {
     auto objectScaleY = selectedObject->getScaleY();
     auto objectYpos = selectedObject->getPositionY();
     auto objectRotation = selectedObject->getRotation();
+    auto objectZorder = selectedObject->m_zOrder;
 
     auto inputMenu = CCMenu::create();
 
@@ -48,19 +51,24 @@ void EditObjectPopup::createInputs() {
 
     this->rotationInput = TextInput::create(100.f, "Object Rotation", "bigfont.fnt");
     this->rotationInput->setString(std::to_string(objectRotation));
+
+    this->zOrderInput = TextInput::create(100.f, "Object Z Order", "bigfont.fnt");
+    this->zOrderInput->setString(std::to_string(objectZorder));
     inputMenu->setContentSize({ 400.f, 100.f });
     
     xPosInput->setPositionX(-180.f);
     yPosInput->setPosition(-180.f, -64.f);
     scaleXInput->setPositionX(-65.f);
     scaleYInput->setPosition(-65.f, -64.f);
-    rotationInput->setPositionX(50.f);
+    rotationInput->setPosition(50.f, -32.f);
+    zOrderInput->setPosition(165.f, -32.f);
     inputMenu->setPosition(winSize.width/2 ,(winSize.height/2) + 37);
     inputMenu->addChild(xPosInput);
     inputMenu->addChild(yPosInput);
     inputMenu->addChild(scaleXInput);
     inputMenu->addChild(scaleYInput);
     inputMenu->addChild(rotationInput);
+    inputMenu->addChild(zOrderInput);
     this->addChild(inputMenu);
 }
 
@@ -92,13 +100,17 @@ bool EditObjectPopup::setup() {
     scaleYLabel->setPosition(225.f, winSize.height / 2);
     scaleYLabel->setScale(.75f);
     auto rotationLabel = CCLabelBMFont::create("Obj. Rotation", "goldfont.fnt");
-    rotationLabel->setPosition(330.f, winSize.height / 2 + 62);
+    rotationLabel->setPosition(330.f, winSize.height / 2 + 32);
     rotationLabel->setScale(.75f);
+    auto zOrderLabel = CCLabelBMFont::create("Obj. Z order", "goldfont.fnt");
+    zOrderLabel->setPosition(445.f, winSize.height / 2 + 32);
+    zOrderLabel->setScale(.75f);
     this->addChild(xPosLabel);
     this->addChild(yPosLabel);
     this->addChild(scaleXLabel);
     this->addChild(scaleYLabel);
     this->addChild(rotationLabel);
+    this->addChild(zOrderLabel);
     this->addChild(buttonMenu);
 
 

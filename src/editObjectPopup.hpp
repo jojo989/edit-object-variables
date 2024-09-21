@@ -17,6 +17,7 @@ class EditObjectPopup : public geode::Popup<> {
 		geode::TextInput* rotationInput;
 		geode::TextInput* scaleXInput;
 		geode::TextInput* scaleYInput;
+		geode::TextInput* zOrderInput;
 	public:	
 		static EditObjectPopup* create();
 		GameObject* selectedObject = LevelEditorLayer::get()->m_editorUI->m_selectedObject;

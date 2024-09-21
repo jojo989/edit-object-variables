@@ -6,8 +6,8 @@
 
 using namespace geode::prelude;
 
-class $modify(MyEditorUI, EditorUI) {	
-//code stolen from circletool by matcool
+class $modify(MyEditorUI, EditorUI) {
+	//code stolen from circletool by matcool
 	void createMoveMenu() {
 		EditorUI::createMoveMenu();
 		auto* btn = this->getSpriteButton("editSprite.png"_spr, menu_selector(MyEditorUI::onMyButton), nullptr, 0.9f);
@@ -19,7 +19,7 @@ class $modify(MyEditorUI, EditorUI) {
 	}
 
 	void onMyButton(CCObject*) {
-		if (!m_selectedObject || m_selectedObjects->count() >= 2){
+		if (!m_selectedObject || m_selectedObjects->count() >= 2) {
 			FLAlertLayer::create("Error", "You can only edit 1 object lel", "Ok")->show();
 			return;
 		}
